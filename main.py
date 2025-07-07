@@ -23,6 +23,12 @@ def parse_args():
         help="The prompt to use for the AI model",
         required=True
     )
+    parser.add_argument(
+        "--save-output",
+        "-s",
+        action="store_true",
+        help="Save the output to a file in the /out directory (optional)",
+    )
 
     return parser.parse_args()
 
@@ -32,7 +38,7 @@ def main():
     args = parse_args()
 
     if args.tool == ToolType.FLASHCARDS:
-        result = generate_flashcard(args.prompt)
+        result = generate_flashcard(args.prompt, args.save_output)
         print(result)
 
 
